@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hussien/page2.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -12,6 +13,7 @@ class _Page1State extends State<Page1> {
   double SliderValue = 0;
   int  weight = 0;
   int  age = 0;
+  bool isMale = true;
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,57 +39,69 @@ class _Page1State extends State<Page1> {
             children: [
 
 
-              Container(
-                height: 159,
-                width: 136,
-                decoration: BoxDecoration(
-                  color: Color(0xff1A1F38),
-                  borderRadius: BorderRadius.circular(15)
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                   Image.asset("assets/images/Vector.png",
-                     height: 68,width:62 ,),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
 
-
-                    SizedBox(height: 15,),
-
-
-                    Text("Female",style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),)
-                  ],
+                  });
+               isMale=false;
+                },
+                child: Container(
+                  height: 159,
+                  width: 136,
+                  decoration: BoxDecoration(
+                    color: isMale==false?Colors.red: Color(0xff1A1F38) ,
+                    borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                     Image.asset("assets/images/Vector.png",
+                       height: 68,width:62 ,),
+                      SizedBox(height: 15,),
+                      Text("Female",style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),)
+                    ],
+                  ),
                 ),
               ),
 
 
-              Container(
-                height: 159,
-                width: 136,
-                decoration: BoxDecoration(
-                  color: Color(0xff1A1F38),
-                  borderRadius: BorderRadius.circular(15),
-                ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
 
-               child:  Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/images/mars.png",
-                      height: 68,width:62 ,),
+                  });
+                  isMale=true;
+                },
+                child: Container(
+                  height: 159,
+                  width: 136,
+                  decoration: BoxDecoration(
+                    color: isMale ==true ?Colors.blue:Color(0xff1A1F38),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+
+                 child:  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/images/mars.png",
+                        height: 68,width:62 ,),
 
 
-                    SizedBox(height: 15,),
+                      SizedBox(height: 15,),
 
 
-                    Text("Male",style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),)
-                  ],
+                      Text("Male",style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),)
+                    ],
+                  ),
                 ),
               ),
 
@@ -251,17 +265,23 @@ class _Page1State extends State<Page1> {
           SizedBox(height: 40,),
 
 
-          Container(
-            height: 50,
-            width:300 ,
-            decoration: BoxDecoration(color: Colors.red,borderRadius: BorderRadius.circular(15)),
-            child: Center(
-              child: Text("Calculate",style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
+          GestureDetector(
+            onTap: () {
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) =>Page2() ,));
+            },
+            child: Container(
+              height: 50,
+              width:300 ,
+              decoration: BoxDecoration(color: Colors.red,borderRadius: BorderRadius.circular(15)),
+              child: Center(
+                child: Text("Calculate",style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+            )
+                ))),
           )
-    )))
         ],
       ),
 
