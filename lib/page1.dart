@@ -10,9 +10,9 @@ class Page1 extends StatefulWidget {
 
 class _Page1State extends State<Page1> {
   @override
-  double SliderValue = 0;
-  int  weight = 0;
-  int  age = 0;
+  double SliderValue = 170;
+  int  weight = 80;
+  int  age = 20;
   bool isMale = true;
 
   Widget build(BuildContext context) {
@@ -268,7 +268,7 @@ class _Page1State extends State<Page1> {
           GestureDetector(
             onTap: () {
             Navigator.push(context, MaterialPageRoute(
-                builder: (context) =>Page2() ,));
+                builder: (context) =>Page2(weight: weight,age: age,height: SliderValue,) ,));
             },
             child: Container(
               height: 50,

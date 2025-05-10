@@ -1,11 +1,43 @@
 import 'package:flutter/material.dart';
-
+import 'dart:math' as math;
 
 class Page2 extends StatelessWidget {
-  const Page2({super.key});
+   Page2({required this.age,required this.weight,required this.height});
+
+   final int age;
+   final int weight;
+   final double height;
+
+  double bmi=0;
+  Color fontcolor=Colors.green;
+
+  String calculate(){
+    bmi=weight/math.pow(height/100, 2);
+
+    if(bmi<18.5){
+      fontcolor =Colors.orange;
+      return "underweight";
+    } else if(bmi>18.5&&bmi<20){
+      fontcolor =Colors.orange;
+      return "underweight";
+    }else if(bmi>20&&bmi<25){
+      fontcolor =Colors.green;
+      return "normal";
+
+    }else if(bmi>25&&bmi<30){
+      fontcolor =Colors.redAccent;
+      return "overweight";
+    }else{
+      fontcolor =Colors.red;
+      return "obese";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+
+    final result=calculate();
+
     return Scaffold(
       backgroundColor: Color(0xff0A0E21),
       body: Padding(
@@ -48,8 +80,8 @@ class Page2 extends StatelessWidget {
                 children: [
                   SizedBox(height: 20,),
 
-                  Text("Normal ",
-                    style: TextStyle(color:Color(0xff09FF7A) ,
+                  Text(result,
+                    style: TextStyle(color:fontcolor ,
                         fontSize: 40,
                         fontWeight: FontWeight.bold ),),
 
@@ -57,7 +89,7 @@ class Page2 extends StatelessWidget {
                   SizedBox(height: 90,),
 
 
-                  Text("19.5",
+                  Text(bmi.toStringAsFixed(2),
                     style: TextStyle(color: Colors.white ,
                         fontSize: 40,
                         fontWeight: FontWeight.bold ),),
